@@ -1,6 +1,6 @@
 export default [
   {
-    name: "jps",
+    name: "JPS",
     slug: "jps",
     load_fee: { wheelchair: 50, stretcher: 200 },
     bari: 100,
@@ -8,7 +8,7 @@ export default [
   },
 
   {
-    name: "private",
+    name: "Private",
     slug: "private",
     load_fee: { wheelchair: 55, stretcher: 300 },
     bari: 100,

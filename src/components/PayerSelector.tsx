@@ -1,5 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
-import { BsChevronDown } from "react-icons/bs";
+import { Heading, Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import usePayers, { Payer } from "../hooks/usePayers";
 
 interface Props {
@@ -10,22 +9,28 @@ interface Props {
 const PayerSelector = ({ onSelectPayer, selectedPayer }: Props) => {
   const { data } = usePayers();
   return (
-    <Menu>
-      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
-        {selectedPayer?.name || "Payers"}
-      </MenuButton>
-      <MenuList>
-        {data.map((payer) => (
-          <MenuItem
-            key={payer.slug}
-            onClick={() => onSelectPayer(payer)}
-            fontWeight={payer.slug === selectedPayer?.slug ? "bold" : "normal"}
-          >
-            {payer.name}
-          </MenuItem>
-        ))}
-      </MenuList>
-    </Menu>
+    <>
+      <RadioGroup>
+        <Heading paddingBottom={5}>{selectedPayer?.name || "Payers"}</Heading>
+        <Stack direction="row">
+          {data.map((payer) => (
+            <Radio
+              paddingEnd={5}
+              colorScheme="DD6B20"
+              size="lg"
+              key={payer.slug}
+              onClick={() => onSelectPayer(payer)}
+              value={payer.name}
+              fontWeight={
+                payer.slug === selectedPayer?.slug ? "bold" : "normal"
+              }
+            >
+              {payer.name}
+            </Radio>
+          ))}
+        </Stack>
+      </RadioGroup>
+    </>
   );
 };
 
