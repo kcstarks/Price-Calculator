@@ -8,6 +8,7 @@ interface Props {
 
 const PayerSelector = ({ onSelectPayer, selectedPayer }: Props) => {
   const { data } = usePayers();
+
   return (
     <>
       <RadioGroup>
@@ -16,11 +17,10 @@ const PayerSelector = ({ onSelectPayer, selectedPayer }: Props) => {
           {data.map((payer) => (
             <Radio
               paddingEnd={5}
-              colorScheme="DD6B20"
               size="lg"
-              key={payer.slug}
-              onClick={() => onSelectPayer(payer)}
               value={payer.name}
+              key={payer.slug}
+              onChange={() => onSelectPayer(payer)}
               fontWeight={
                 payer.slug === selectedPayer?.slug ? "bold" : "normal"
               }
