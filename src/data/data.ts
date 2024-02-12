@@ -5,6 +5,7 @@ export default [
     load_fee: { ambulatory: 35.0, wheelchair: 55.0, stretcher: 300.0 },
     bari: 100.0,
     oxygen: { one: 25.0, two: 35.0, three: 50.0 },
+    weekend_fee: 25.0,
   },
 
   {
@@ -13,6 +14,7 @@ export default [
     load_fee: { ambulatory: 35.0, wheelchair: 55.0, stretcher: 300.0 },
     bari: 100.0,
     oxygen: { one: 25.0, two: 35.0, three: 50.0 },
+    weekend_fee: 25.0,
   },
 
   {
@@ -21,5 +23,6 @@ export default [
     load_fee: { ambulatory: 35.0, wheelchair: 50.0, stretcher: 200.0 },
     bari: 100.0,
     oxygen: { one: 25.0, two: 35.0, three: 50.0 },
+    weekend_fee: 25.0,
   },
 ];

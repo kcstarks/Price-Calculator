@@ -7,12 +7,14 @@ import ModeSelector from "./components/ModeSelector";
 import OxygenSelector from "./components/OxygenSelector";
 import PrivateTable from "./components/tables/PrivateTable";
 import ContractTable from "./components/tables/ContractTable";
+import WeekendSelector from "./components/WeekendSelector";
 
 export interface InputQuery {
   payer: Payer | null;
   miles: number;
   mode: string;
   oxygenRange: string;
+  weekend: boolean;
 }
 
 function App() {
@@ -47,6 +49,14 @@ function App() {
           <ModeSelector
             selectedPayer={inputQuery.payer}
             onSelectMode={(mode) => setInputQuery({ ...inputQuery, mode })}
+          />
+        </Box>
+        <Box>
+          <WeekendSelector
+            selectedPayer={inputQuery.payer}
+            onSelectWeekend={(weekend) =>
+              setInputQuery({ ...inputQuery, weekend })
+            }
           />
         </Box>
         <Box>
