@@ -5,10 +5,11 @@ import { useState } from "react";
 interface Props {
   selectedPayer: Payer | null;
   onSelectOxygen: (oxygenRange: string) => void;
+  setIsOxygen: (isOxygen: boolean) => void;
 }
 
-const Oxygen = ({ selectedPayer, onSelectOxygen }: Props) => {
-  const [isOxygen, setIsOxygen] = useState("false");
+const Oxygen = ({ selectedPayer, onSelectOxygen, setIsOxygen }: Props) => {
+  const [oxygen, setOxygen] = useState("false");
 
   const oxygenMap: { [key: string]: string } = {
     one: "2 - 4",
@@ -19,15 +20,26 @@ const Oxygen = ({ selectedPayer, onSelectOxygen }: Props) => {
   if (selectedPayer != null) {
     const oxygenKeys: string[] = Object.keys(selectedPayer.oxygen);
 
-    if (isOxygen === "false") {
+    if (oxygen === "false") {
       return (
         <>
           <Heading paddingBottom={3}>Any oxygen?</Heading>
-          <RadioGroup onChange={setIsOxygen} value={isOxygen}>
-            <Radio value="true" paddingEnd={5}>
+          <RadioGroup
+            onChange={(value) => setOxygen(JSON.parse(value))}
+            value={oxygen.toString()}
+          >
+            <Radio
+              value={true.toString()}
+              paddingEnd={5}
+              onChange={() => setIsOxygen(true)}
+            >
               Yes
             </Radio>
-            <Radio value="false" paddingEnd={5}>
+            <Radio
+              value={false.toString()}
+              onChange={() => setIsOxygen(false)}
+              paddingEnd={5}
+            >
               No
             </Radio>
           </RadioGroup>

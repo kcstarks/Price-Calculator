@@ -13,6 +13,7 @@ export interface Payer {
     two: number;
     three: number;
   };
+  weekend_fee: number;
 }
 
 const usePayers = () => ({ data: payers });
