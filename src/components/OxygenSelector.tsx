@@ -22,7 +22,7 @@ const Oxygen = ({ selectedPayer, onSelectOxygen }: Props) => {
     if (isOxygen === "false") {
       return (
         <>
-          <Heading paddingBottom={5}>Any oxygen?</Heading>
+          <Heading paddingBottom={3}>Any oxygen?</Heading>
           <RadioGroup onChange={setIsOxygen} value={isOxygen}>
             <Radio value="true" paddingEnd={5}>
               Yes
@@ -36,7 +36,7 @@ const Oxygen = ({ selectedPayer, onSelectOxygen }: Props) => {
     } else {
       return (
         <>
-          <Heading paddingBottom={5}>How many liters?</Heading>
+          <Heading paddingBottom={3}>How many liters?</Heading>
           <RadioGroup>
             {oxygenKeys.map((key) => (
               <Radio
