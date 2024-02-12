@@ -9,9 +9,9 @@ export interface Payer {
   };
   bari: number;
   oxygen: {
-    "2-4": number;
-    "5-7": number;
-    "8+": number;
+    one: number;
+    two: number;
+    three: number;
   };
 }
 

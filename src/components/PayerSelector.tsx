@@ -21,9 +21,6 @@ const PayerSelector = ({ onSelectPayer, selectedPayer }: Props) => {
               value={payer.name}
               key={payer.slug}
               onChange={() => onSelectPayer(payer)}
-              fontWeight={
-                payer.slug === selectedPayer?.slug ? "bold" : "normal"
-              }
             >
               {payer.name}
             </Radio>

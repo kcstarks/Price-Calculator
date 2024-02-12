@@ -1,57 +1,21 @@
-import {
-  FormEvent,
-  FormEventHandler,
-  RefObject,
-  useRef,
-  useState,
-} from "react";
+import { useState } from "react";
 import PayerSelctor from "./components/PayerSelector";
 import MileInput from "./components/MileInput";
-import usePayers, { Payer } from "./hooks/usePayers";
-import {
-  Box,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  Container,
-  Flex,
-  FormControl,
-  FormLabel,
-  HStack,
-  Heading,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  Radio,
-  RadioGroup,
-  Stack,
-} from "@chakra-ui/react";
-import { string } from "zod";
+import { Payer } from "./hooks/usePayers";
+import { Box, Button, Container, Flex, Heading } from "@chakra-ui/react";
+import Oxygen from "./components/OxygenSelector";
+import ModeSelector from "./components/ModeSelector";
+import OxygenSelector from "./components/OxygenSelector";
 
 export interface InputQuery {
   payer: Payer | null;
   miles: number;
+  mode: string;
+  oxygenRange: string;
 }
 
 function App() {
   const [inputQuery, setInputQuery] = useState<InputQuery>({} as InputQuery);
-  const [inputMiles, setInputMiles] = useState(0);
-
-  const { data } = usePayers();
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setInputQuery({ ...inputQuery, miles: inputMiles });
-    console.log(inputQuery.payer);
-  };
-
-  const handleMiles = (value: string) => {
-    let parsedValue = parseInt(value);
-    setInputMiles(parsedValue);
-  };
 
   return (
     <Container
@@ -78,13 +42,21 @@ function App() {
           />
         </Box>
         <Box>
-          <Heading></Heading>
+          <ModeSelector
+            selectedPayer={inputQuery.payer}
+            onSelectMode={(mode) => setInputQuery({ ...inputQuery, mode })}
+          />
         </Box>
         <Box>
-          <Heading></Heading>
+          <OxygenSelector
+            selectedPayer={inputQuery.payer}
+            onSelectOxygen={(oxygenRange) =>
+              setInputQuery({ ...inputQuery, oxygenRange })
+            }
+          />
         </Box>
         <Box>
-          <Button onSubmit={(event) => handleSubmit}>Submit</Button>
+          <Button>Submit</Button>
         </Box>
       </Flex>
     </Container>

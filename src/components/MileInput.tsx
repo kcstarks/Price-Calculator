@@ -1,5 +1,5 @@
-import { FormControl, FormLabel, Input, Stack, Text } from "@chakra-ui/react";
-import { RefObject, useRef } from "react";
+import { FormControl, FormLabel, Heading, Input } from "@chakra-ui/react";
+import { useRef } from "react";
 
 interface Props {
   onInputMiles: (miles: number) => void;
@@ -17,7 +17,9 @@ const MileInput = ({ onInputMiles }: Props) => {
         }}
       >
         <FormLabel>
-          {ref.current === null ? "Miles" : ref.current?.value + " Miles"}
+          <Heading>
+            {ref.current === null ? "Miles" : ref.current?.value + " Miles"}
+          </Heading>
         </FormLabel>
         <Input ref={ref} type="number" />
       </FormControl>
