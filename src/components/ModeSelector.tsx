@@ -15,7 +15,7 @@ const ModeSelector = ({ selectedPayer, onSelectMode }: Props) => {
     const modeKeys: string[] = Object.keys(selectedPayer.load_fee);
     return (
       <>
-        <Heading paddingBottom={3}>How many liters?</Heading>
+        <Heading paddingBottom={3}>Mode</Heading>
         <RadioGroup>
           {modeKeys.map((key) => (
             <Radio
