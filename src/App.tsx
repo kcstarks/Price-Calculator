@@ -3,9 +3,10 @@ import PayerSelctor from "./components/PayerSelector";
 import MileInput from "./components/MileInput";
 import { Payer } from "./hooks/usePayers";
 import { Box, Button, Container, Flex, Heading } from "@chakra-ui/react";
-import Oxygen from "./components/OxygenSelector";
 import ModeSelector from "./components/ModeSelector";
 import OxygenSelector from "./components/OxygenSelector";
+import PrivateTable from "./components/tables/PrivateTable";
+import ContractTable from "./components/tables/ContractTable";
 
 export interface InputQuery {
   payer: Payer | null;
@@ -16,6 +17,7 @@ export interface InputQuery {
 
 function App() {
   const [inputQuery, setInputQuery] = useState<InputQuery>({} as InputQuery);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   return (
     <Container
@@ -56,8 +58,17 @@ function App() {
           />
         </Box>
         <Box>
-          <Button>Submit</Button>
+          <Button onChange={() => setIsSubmit(true)}>Submit</Button>
         </Box>
+      </Flex>
+      <Flex>
+        {isSubmit ? (
+          inputQuery.payer?.name === "Private" ? (
+            <PrivateTable inputQuery={inputQuery} />
+          ) : (
+            <ContractTable inputQuery={inputQuery} />
+          )
+        ) : null}
       </Flex>
     </Container>
   );
