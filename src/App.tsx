@@ -8,6 +8,7 @@ import OxygenSelector from "./components/OxygenSelector";
 import PrivateTable from "./components/tables/PrivateTable";
 import ContractTable from "./components/tables/ContractTable";
 import WeekendSelector from "./components/WeekendSelector";
+import BariSelector from "./components/BariSelector";
 
 export interface InputQuery {
   payer: Payer | null;
@@ -15,6 +16,7 @@ export interface InputQuery {
   mode: string;
   oxygenRange: string;
   weekend: boolean;
+  bari: boolean;
 }
 
 function App() {
@@ -32,7 +34,7 @@ function App() {
       <Flex
         width={{ base: "100%", sm: "75%", md: "75%", lg: "50%" }}
         direction="column"
-        gap={5}
+        gap={10}
       >
         <Box>
           <PayerSelctor
@@ -49,6 +51,12 @@ function App() {
           <ModeSelector
             selectedPayer={inputQuery.payer}
             onSelectMode={(mode) => setInputQuery({ ...inputQuery, mode })}
+          />
+        </Box>
+        <Box>
+          <BariSelector
+            selectedPayer={inputQuery.payer}
+            onSelectBari={(bari) => setInputQuery({ ...inputQuery, bari })}
           />
         </Box>
         <Box>
