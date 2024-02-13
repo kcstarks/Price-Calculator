@@ -74,17 +74,6 @@ const PrivateTable = ({ inputQuery }: Props) => {
   };
 
   //
-
-  const cellsList = [
-    "milesFee",
-    "dryMilesFee",
-    "loadFee",
-    "bariFee",
-    "weekendFee",
-    "oxygenFee",
-  ];
-
-  //
   const oxygenMap: { [key: string]: string } = {
     one: "2-4 lpm O",
     two: "5-7 lpm O",
