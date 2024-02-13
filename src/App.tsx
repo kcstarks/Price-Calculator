@@ -24,14 +24,14 @@ function App() {
 
   return (
     <Container
-      padding={20}
+      padding={[0, 2, 2, 2]}
+      paddingTop={[0, 8, 8, 8]}
       centerContent
       minW="100%"
-      height="100vh"
       bg="orange.600"
     >
       <Flex
-        width={{ base: "100%", sm: "75%", md: "75%", lg: "50%" }}
+        width={{ base: "50%", sm: "75%", md: "75%", lg: "25%" }}
         direction="column"
         gap={10}
       >

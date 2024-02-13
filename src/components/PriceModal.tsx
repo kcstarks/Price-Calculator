@@ -22,14 +22,13 @@ const PriceModal = ({ inputQuery }: Props) => {
   return (
     <>
       <Button onClick={onOpen}>Calculate</Button>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered motionPreset="scale">
+      <Modal isOpen={isOpen} onClose={onClose} motionPreset="scale" size="lg">
         <ModalOverlay
           bg="none"
-          backdropFilter="auto"
-          backdropInvert="80%"
-          backdropBlur="2px"
+          backdropFilter="blur(10px)"
+          backdropInvert="10%"
         />
-        <ModalContent>
+        <ModalContent padding={5}>
           <ModalHeader></ModalHeader>
           <ModalCloseButton />
           <ModalBody padding={2}>

@@ -21,7 +21,7 @@ const MileInput = ({ onInputMiles }: Props) => {
             {ref.current === null ? "Miles" : ref.current?.value + " Miles"}
           </Heading>
         </FormLabel>
-        <Input ref={ref} type="number" />
+        <Input ref={ref} type="number" width="auto" />
       </FormControl>
     </>
   );
