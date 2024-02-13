@@ -12,7 +12,7 @@ function capitalize(str: string) {
 
 const ModeSelector = ({ selectedPayer, onSelectMode }: Props) => {
   if (selectedPayer != null) {
-    const modeKeys: string[] = Object.keys(selectedPayer.load_fee);
+    const modeKeys: string[] = Object.keys(selectedPayer.mode);
     return (
       <>
         <Heading paddingBottom={3}>Mode</Heading>

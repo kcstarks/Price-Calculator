@@ -48,23 +48,27 @@ const ContractTable = ({ inputQuery }: Props) => {
       : null;
   }, []);
 
+  let payerMode =
+    inputQuery.payer?.mode[
+      inputQuery.mode as keyof typeof inputQuery.payer.mode
+    ];
+
   const feePerMile = () => {
-    if (inputQuery.mode === "ambulatory" || inputQuery.mode === "wheelchair") {
+    if (inputQuery.payer != null) {
+      let payermode =
+        inputQuery.payer.mode[
+          inputQuery.mode as keyof typeof inputQuery.payer.mode
+        ];
       if (inputQuery.miles < 50) {
-        return 3.5;
+        return payermode.underfifty;
       } else if (inputQuery.miles < 100) {
-        return 4.5;
+        return payermode.underhundred;
       } else {
-        return 5.5;
+        return payermode.overhundred;
       }
     } else {
-      if (inputQuery.miles < 50) {
-        return 5.5;
-      } else if (inputQuery.miles < 100) {
-        return 6.5;
-      } else {
-        return 8.0;
-      }
+      console.log("no payer mode");
+      return 0;
     }
   };
 
@@ -72,16 +76,14 @@ const ContractTable = ({ inputQuery }: Props) => {
     return feePerMile() * inputQuery.miles;
   };
 
+  //
   const oxygenMap: { [key: string]: string } = {
     one: "2-4 lpm O",
     two: "5-7 lpm O",
     three: "8+ lpm O",
   };
-  const modePrice =
-    inputQuery.payer?.load_fee[
-      inputQuery.mode as keyof typeof inputQuery.payer.load_fee
-    ];
-  const oxygenPrice =
+  const loadFee = payerMode?.load_fee;
+  const oxygenFee =
     inputQuery.payer?.oxygen[
       inputQuery.oxygenRange as keyof typeof inputQuery.payer.oxygen
     ];
@@ -110,8 +112,8 @@ const ContractTable = ({ inputQuery }: Props) => {
             </Tr>
             <Tr className="row">
               <Th>Load Fee ({inputQuery.mode})</Th>
-              <Td>${modePrice}</Td>
-              <Td className="totalCell">${modePrice}</Td>
+              <Td>${loadFee}</Td>
+              <Td className="totalCell">${loadFee}</Td>
             </Tr>
             {inputQuery.bari ? (
               <Tr className="row">
@@ -133,8 +135,8 @@ const ContractTable = ({ inputQuery }: Props) => {
                   {oxygenMap[inputQuery.oxygenRange]}
                   <sub>2</sub>
                 </Th>
-                <Td>${oxygenPrice}</Td>
-                <Td className="totalCell">${oxygenPrice}</Td>
+                <Td>${oxygenFee}</Td>
+                <Td className="totalCell">${oxygenFee}</Td>
               </Tr>
             ) : null}
             {/*<Tr className="row">

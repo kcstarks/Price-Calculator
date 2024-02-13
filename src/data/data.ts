@@ -2,7 +2,26 @@ export default [
   {
     name: "Private",
     slug: "private",
-    load_fee: { ambulatory: 35.0, wheelchair: 55.0, stretcher: 300.0 },
+    mode: {
+      ambulatory: {
+        load_fee: 35.0,
+        underfifty: 3.5,
+        underhundred: 4.5,
+        overhundred: 5.5,
+      },
+      wheelchair: {
+        load_fee: 55.0,
+        underfifty: 3.5,
+        underhundred: 4.5,
+        overhundred: 5.5,
+      },
+      stretcher: {
+        load_fee: 300.0,
+        underfifty: 5.5,
+        underhundred: 6.5,
+        overhundred: 8.0,
+      },
+    },
     bari: 100.0,
     oxygen: { one: 25.0, two: 35.0, three: 50.0 },
     weekend_fee: 25.0,
@@ -11,7 +30,26 @@ export default [
   {
     name: "Contract",
     slug: "contract",
-    load_fee: { ambulatory: 35.0, wheelchair: 55.0, stretcher: 300.0 },
+    mode: {
+      ambulatory: {
+        load_fee: 35.0,
+        underfifty: 3.5,
+        underhundred: 4.5,
+        overhundred: 5.5,
+      },
+      wheelchair: {
+        load_fee: 55.0,
+        underfifty: 3.5,
+        underhundred: 4.5,
+        overhundred: 5.5,
+      },
+      stretcher: {
+        load_fee: 300.0,
+        underfifty: 5.5,
+        underhundred: 6.5,
+        overhundred: 8.0,
+      },
+    },
     bari: 100.0,
     oxygen: { one: 25.0, two: 35.0, three: 50.0 },
     weekend_fee: 25.0,
@@ -20,7 +58,26 @@ export default [
   {
     name: "JPS",
     slug: "jps",
-    load_fee: { ambulatory: 35.0, wheelchair: 50.0, stretcher: 200.0 },
+    mode: {
+      ambulatory: {
+        load_fee: 35.0,
+        underfifty: 3.5,
+        underhundred: 4.5,
+        overhundred: 5.5,
+      },
+      wheelchair: {
+        load_fee: 55.0,
+        underfifty: 3.5,
+        underhundred: 4.5,
+        overhundred: 5.5,
+      },
+      stretcher: {
+        load_fee: 300.0,
+        underfifty: 5.5,
+        underhundred: 6.5,
+        overhundred: 8.0,
+      },
+    },
     bari: 100.0,
     oxygen: { one: 25.0, two: 35.0, three: 50.0 },
     weekend_fee: 25.0,

@@ -3,9 +3,25 @@ import payers from "../data/data";
 export interface Payer {
   name: string;
   slug: string;
-  load_fee: {
-    wheelchair: number;
-    stretcher: number;
+  mode: {
+    ambulatory: {
+      load_fee: number;
+      underfifty: number;
+      underhundred: number;
+      overhundred: number;
+    };
+    wheelchair: {
+      load_fee: number;
+      underfifty: number;
+      underhundred: number;
+      overhundred: number;
+    };
+    stretcher: {
+      load_fee: number;
+      underfifty: number;
+      underhundred: number;
+      overhundred: number;
+    };
   };
   bari: number;
   oxygen: {
