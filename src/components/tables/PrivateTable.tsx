@@ -7,14 +7,48 @@ import {
   Tr,
   Td,
   InputGroup,
+  Tfoot,
 } from "@chakra-ui/react";
 import { InputQuery } from "../../App";
+import { useEffect } from "react";
 
 interface Props {
   inputQuery: InputQuery;
 }
 
 const PrivateTable = ({ inputQuery }: Props) => {
+  useEffect(() => {
+    function getSum(total: number, num: number) {
+      return total + num;
+    }
+    const totalBeforePercent = () => {
+      let item = document.getElementsByClassName("totalCell");
+      let totalList: number[] = [];
+      for (let i = 0; i < item.length; i++) {
+        let itemContent = item[i].lastChild?.textContent;
+        if (itemContent != null) {
+          totalList.push(parseFloat(itemContent));
+        }
+      }
+      return totalList.reduce(getSum, 0);
+    };
+
+    const percentTotal = () => {
+      return totalBeforePercent() * 0.06;
+    };
+
+    let percentCell = document.getElementById("sixPercent");
+    percentCell != null
+      ? (percentCell.innerHTML = "$" + percentTotal().toString())
+      : console.log(percentCell);
+
+    let totalCell = document.getElementById("total");
+    totalCell != null
+      ? (totalCell.innerHTML =
+          "$" + (percentTotal() + totalBeforePercent()).toString())
+      : null;
+  }, []);
+
   const feePerMile = () => {
     if (inputQuery.mode === "ambulatory" || inputQuery.mode === "wheelchair") {
       if (inputQuery.miles < 50) {
@@ -39,16 +73,36 @@ const PrivateTable = ({ inputQuery }: Props) => {
     return feePerMile() * inputQuery.miles;
   };
 
+  //
+
+  const cellsList = [
+    "milesFee",
+    "dryMilesFee",
+    "loadFee",
+    "bariFee",
+    "weekendFee",
+    "oxygenFee",
+  ];
+
+  //
   const oxygenMap: { [key: string]: string } = {
     one: "2-4 lpm O",
     two: "5-7 lpm O",
     three: "8+ lpm O",
   };
+  const modePrice =
+    inputQuery.payer?.load_fee[
+      inputQuery.mode as keyof typeof inputQuery.payer.load_fee
+    ];
+  const oxygenPrice =
+    inputQuery.payer?.oxygen[
+      inputQuery.oxygenRange as keyof typeof inputQuery.payer.oxygen
+    ];
 
   return (
     <>
       <TableContainer>
-        <Table variant="simple">
+        <Table variant="simple" id="privateTable">
           <Thead>
             <Tr>
               <Th>Category</Th>
@@ -56,47 +110,59 @@ const PrivateTable = ({ inputQuery }: Props) => {
               <Th>Total</Th>
             </Tr>
           </Thead>
-          <Tbody>
-            <Tr>
-              <Td>Miles({inputQuery.miles})</Td>
+          <Tbody id="tableBody">
+            <Tr className="row">
+              <Th>Miles({inputQuery.miles})</Th>
               <Td>${feePerMile()}/mi</Td>
-              <Td>${costPerMile()}</Td>
+              <Td className="totalCell">${costPerMile()}</Td>
             </Tr>
-            <Tr>
-              <Td>Dry Mileage</Td>
-              <Td>$1.00/{inputQuery.miles}</Td>
-              <Td>${inputQuery.miles}</Td>
+            <Tr className="row">
+              <Th>Dry Mileage</Th>
+              <Td>$1.00/{inputQuery.miles}mi</Td>
+              <Td className="totalCell">${inputQuery.miles}</Td>
             </Tr>
-            <Tr>
-              <Td>Load Fee ({inputQuery.mode})</Td>
-              <Td>${inputQuery.payer?.load_fee[inputQuery.mode]}</Td>
-              <Td>${inputQuery.payer?.load_fee[inputQuery.mode]}</Td>
+            <Tr className="row">
+              <Th>Load Fee ({inputQuery.mode})</Th>
+              <Td>${modePrice}</Td>
+              <Td className="totalCell">${modePrice}</Td>
             </Tr>
             {inputQuery.bari ? (
-              <Tr>
-                <Td>Bariatric</Td>
+              <Tr className="row">
+                <Th>Bariatric</Th>
                 <Td>${inputQuery.payer?.bari}</Td>
-                <Td>${inputQuery.payer?.bari}</Td>
+                <Td className="totalCell">${inputQuery.payer?.bari}</Td>
               </Tr>
             ) : null}
             {inputQuery.weekend ? (
-              <Tr>
-                <Td>Weekend Fee</Td>
+              <Tr className="row">
+                <Th>Weekend Fee</Th>
                 <Td>${inputQuery.payer?.weekend_fee}</Td>
-                <Td>${inputQuery.payer?.weekend_fee}</Td>
+                <Td className="totalCell">${inputQuery.payer?.weekend_fee}</Td>
               </Tr>
             ) : null}
             {inputQuery.isOxygen ? (
-              <Tr>
-                <Td>
+              <Tr className="row">
+                <Th>
                   {oxygenMap[inputQuery.oxygenRange]}
                   <sub>2</sub>
-                </Td>
-                <Td>${inputQuery.payer?.oxygen[inputQuery.oxygenRange]}</Td>
-                <Td>${inputQuery.payer?.oxygen[inputQuery.oxygenRange]}</Td>
+                </Th>
+                <Td>${oxygenPrice}</Td>
+                <Td className="totalCell">${oxygenPrice}</Td>
               </Tr>
             ) : null}
+            <Tr className="row">
+              <Th>Fuel Surcharge</Th>
+              <Td>6%</Td>
+              <Td id="sixPercent"></Td>
+            </Tr>
           </Tbody>
+          <Tfoot>
+            <Tr>
+              <Th></Th>
+              <Th>Total</Th>
+              <Td id="total"></Td>
+            </Tr>
+          </Tfoot>
         </Table>
       </TableContainer>
     </>
