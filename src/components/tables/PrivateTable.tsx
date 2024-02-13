@@ -40,7 +40,7 @@ const PrivateTable = ({ inputQuery }: Props) => {
     let percentCell = document.getElementById("sixPercent");
     percentCell != null
       ? (percentCell.innerHTML = "$" + percentTotal().toString())
-      : console.log(percentCell);
+      : null;
 
     let totalCell = document.getElementById("total");
     totalCell != null
