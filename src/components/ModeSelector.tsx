@@ -30,6 +30,8 @@ const ModeSelector = ({ selectedPayer, onSelectMode }: Props) => {
         </RadioGroup>
       </>
     );
+  } else {
+    return <div>Mode Selector not found</div>;
   }
 };
 

@@ -33,6 +33,8 @@ const WeekendSelector = ({ onSelectWeekend, selectedPayer }: Props) => {
         </RadioGroup>
       </>
     );
+  } else {
+    return <div>Weekend Selector not found</div>;
   }
 };
 

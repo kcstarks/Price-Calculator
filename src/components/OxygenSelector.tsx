@@ -64,7 +64,9 @@ const Oxygen = ({ selectedPayer, onSelectOxygen, setIsOxygen }: Props) => {
         </>
       );
     }
-  } else null;
+  } else {
+    return <div>Oxygen Selector not found</div>;
+  }
 };
 
 export default Oxygen;

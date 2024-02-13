@@ -30,6 +30,8 @@ const BariSelector = ({ selectedPayer, onSelectBari }: Props) => {
         </RadioGroup>
       </>
     );
+  } else {
+    return <div>Bariatric Selector not found</div>;
   }
 };
 
