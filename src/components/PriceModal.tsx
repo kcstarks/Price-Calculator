@@ -22,7 +22,7 @@ const PriceModal = ({ inputQuery }: Props) => {
   return (
     <>
       <Button onClick={onOpen}>Calculate</Button>
-      <Modal isOpen={isOpen} onClose={onClose} motionPreset="scale" size="lg" color="blackAlpha.600">
+      <Modal isOpen={isOpen} onClose={onClose} motionPreset="scale" size="lg" >
         <ModalOverlay
           bg="none"
           backdropFilter="blur(10px)"
@@ -31,7 +31,7 @@ const PriceModal = ({ inputQuery }: Props) => {
         <ModalContent padding={5}>
           <ModalHeader></ModalHeader>
           <ModalCloseButton />
-          <ModalBody padding={2} color="blackAlpha.600">
+          <ModalBody padding={2}>
             {inputQuery.payer?.name === "Private" ? (
               <PrivateTable inputQuery={inputQuery} />
             ) : (
