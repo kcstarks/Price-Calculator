@@ -20,6 +20,9 @@ const theme = extendTheme({
           base: "24px",
         },
       },
+      Modal: {
+        color: "blackAlpha.600",
+     },
     },
   },
 });
