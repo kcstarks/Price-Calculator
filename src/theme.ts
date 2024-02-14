@@ -10,8 +10,7 @@ const theme = extendTheme({
       // styles for the `body`
       Body: {
         background: "orange.600",
-        color: "whiteAlpha.600",
-      },
+        
     },   
 
     components: {
@@ -20,9 +19,7 @@ const theme = extendTheme({
           base: "24px",
         },
       },
-      Modal: {
-        color: "blackAlpha.600",
-     },
+      
     },
   },
 });
