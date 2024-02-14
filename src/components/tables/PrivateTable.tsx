@@ -92,7 +92,7 @@ const PrivateTable = ({ inputQuery }: Props) => {
   return (
     <>
       <TableContainer>
-        <Table variant="simple" id="privateTable">
+        <Table variant="simple" id="privateTable" color="Black !important">
           <Thead>
             <Tr>
               <Th>Category</Th>
