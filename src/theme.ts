@@ -11,7 +11,8 @@ const theme = extendTheme({
       Body: {
         background: "orange.600",
         
-    },   
+      },   
+    },
 
     components: {
       Heading: {
