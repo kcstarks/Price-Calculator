@@ -19,7 +19,10 @@ const theme = extendTheme({
           base: "24px",
         },
       },
-      Table: {color: "Black"}
+
+      Table: {
+        color: "Black",
+      },
     },
   },
 });
