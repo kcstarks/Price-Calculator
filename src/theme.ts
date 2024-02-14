@@ -10,7 +10,7 @@ const theme = extendTheme({
       // styles for the `body`
       Body: {
         background: "orange.600",
-        
+        color: "White",
       },   
     },
 
