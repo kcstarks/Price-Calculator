@@ -92,7 +92,7 @@ const PrivateTable = ({ inputQuery }: Props) => {
   return (
     <>
       <TableContainer>
-        <Table variant="simple" id="privateTable">
+        <Table variant="simple" id="privateTable" color="Black !important">
           <Thead>
             <Tr>
               <Th>Category</Th>
@@ -106,11 +106,13 @@ const PrivateTable = ({ inputQuery }: Props) => {
               <Td>${feePerMile()}/mi</Td>
               <Td className="totalCell">${costPerMile()}</Td>
             </Tr>
+           { inputQuery.miles > 100 ? (
             <Tr className="row">
               <Th>Dry Mileage</Th>
               <Td>$1.00/{inputQuery.miles}mi</Td>
               <Td className="totalCell">${inputQuery.miles}</Td>
-            </Tr>
+            </Tr>) : null}
+
             <Tr className="row">
               <Th>Load Fee ({inputQuery.mode})</Th>
               <Td>${loadFee}</Td>
