@@ -28,7 +28,6 @@ function App() {
       paddingTop={[0, 8, 8, 8]}
       centerContent
       minW="100%"
-      bg="orange.600"
     >
       <Flex
         width={{ base: "50%", sm: "75%", md: "75%", lg: "25%" }}

@@ -28,7 +28,7 @@ const PriceModal = ({ inputQuery }: Props) => {
           backdropFilter="blur(10px)"
           backdropInvert="10%"
         />
-        <ModalContent padding={5}>
+        <ModalContent padding={5} bg="#030303">
           <ModalHeader></ModalHeader>
           <ModalCloseButton />
           <ModalBody padding={2}>

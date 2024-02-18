@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+Td {
+  color: #ffffff !important;
+}
+
+Thead > Tr > Th,
+Tfoot > Tr > Th {
+  color: #ef4723 !important;
+}
+
+.row > Th {
+  color: #f0af24;
+}
