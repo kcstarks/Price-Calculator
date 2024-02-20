@@ -65,7 +65,7 @@ const Oxygen = ({ selectedPayer, onSelectOxygen, setIsOxygen }: Props) => {
       );
     }
   } else {
-    return <div></div>
+    return <div> </div>
   }
 };
 
