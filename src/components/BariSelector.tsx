@@ -31,7 +31,7 @@ const BariSelector = ({ selectedPayer, onSelectBari }: Props) => {
       </>
     );
   } else {
-    return <div>Bariatric Selector not found</div>;
+    return <div></div>;
   }
 };
 
