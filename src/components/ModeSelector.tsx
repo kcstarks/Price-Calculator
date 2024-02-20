@@ -31,7 +31,7 @@ const ModeSelector = ({ selectedPayer, onSelectMode }: Props) => {
       </>
     );
   } else {
-    return <div></div>;
+    return <div> </div>;
   }
 };
 
