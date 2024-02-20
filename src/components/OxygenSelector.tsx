@@ -65,7 +65,7 @@ const Oxygen = ({ selectedPayer, onSelectOxygen, setIsOxygen }: Props) => {
       );
     }
   } else {
-    return <div>Oxygen Selector not found</div>;
+    return <div></div>
   }
 };
 
