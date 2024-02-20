@@ -31,7 +31,7 @@ const BariSelector = ({ selectedPayer, onSelectBari }: Props) => {
       </>
     );
   } else {
-    return <div></div>;
+    return <div> </div>;
   }
 };
 
