@@ -33,7 +33,7 @@ const WeekendSelector = ({ onSelectWeekend, selectedPayer }: Props) => {
         </RadioGroup>
       </>
     );
-  } else return <div></div>;
+  } else return <div> </div>;
   }
 };
 
