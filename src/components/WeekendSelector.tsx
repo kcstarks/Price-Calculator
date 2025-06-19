@@ -35,6 +35,6 @@ const WeekendSelector = ({ onSelectWeekend, selectedPayer }: Props) => {
       </>
     );
   } else return <div> </div>;
-  }
+  };
 
 export default WeekendSelector;
