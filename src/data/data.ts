@@ -38,6 +38,12 @@ export default [
     name: "Contract",
     slug: "contract",
     mode: {
+      taxi: {
+        load_fee: 20.0,
+        underfifty: 1.75,
+        underhundred: 0,
+        overhundred: 0,
+      },
       ambulatory: {
         load_fee: 30.0,
         underfifty: 3.0,
@@ -67,6 +73,12 @@ export default [
     name: "JPS",
     slug: "jps",
     mode: {
+      taxi: {
+        load_fee: 20.0,
+        underfifty: 1.75,
+        underhundred: 0,
+        overhundred: 0,
+      },
       ambulatory: {
         load_fee: 30.0,
         underfifty: 3.0,
