@@ -5,39 +5,41 @@ export interface Payer {
   slug: string;
   mode: {
     taxi: {
-      load_fee: float,
-      underfifty: float,
+      load_fee: number,
+      underfifty: number,
+      underhundred: number,
+      overhundred: number,
     },
     ambulatory: {
-      load_fee: float;
-      underfifty: float;
-      underhundred: float;
-      overhundred: float;
+      load_fee: number;
+      underfifty: number;
+      underhundred: number;
+      overhundred: number;
     };
     wheelchair: {
-      load_fee: float;
-      underfifty: float;
-      underhundred: float;
-      overhundred: float;
+      load_fee: number;
+      underfifty: number;
+      underhundred: number;
+      overhundred: number;
     };
     stretcher: {
-      load_fee: float;
-      underfifty: float;
-      underhundred: float;
-      overhundred: float;
+      load_fee: number;
+      underfifty: number;
+      underhundred: number;
+      overhundred: number;
     };
   };
-  bari: float;
+  bari: number;
   oxygen: {
-    one: float;
-    two: float;
-    three: float;
+    one: number;
+    two: number;
+    three: number;
   };
-  weekend_fee: float;
+  weekend_fee: number;
   fuel_surcharge: {
-    over_3: float;
-    over_4: float;
-    over_5: float;
+    over_3: number;
+    over_4: number;
+    over_5: number;
   }
 }
 

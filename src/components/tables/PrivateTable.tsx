@@ -32,24 +32,27 @@ const PrivateTable = ({ inputQuery }: Props) => {
       }
       return totalList.reduce(getSum, 0);
     };
-    const fuelFee = 
+    const fuelFee:number | undefined = 
       inputQuery.payer?.fuel_surcharge[
-        inputQuery.fuelRange as keyof typeof inputQuery.payer.fuel
+        inputQuery.fuelRange as keyof typeof inputQuery.payer.fuel_surcharge
     ];
-    const percentTotal = () => {
-      let x = totalBeforePercent() * fuelFee;
-      return parseFloat(x.toFixed(2))
+
+    let percentTotal = 0
+    if (fuelFee) {
+        let x = totalBeforePercent() * fuelFee;
+        percentTotal = parseFloat(x.toFixed(2))
     };
+
 
     let percentCell = document.getElementById("fuelSurcharge");
     percentCell != null
-      ? (percentCell.innerHTML = "$" + percentTotal().toString())
+      ? (percentCell.innerHTML = "$" + percentTotal.toString())
       : null;
 
     let totalCell = document.getElementById("total");
     totalCell != null
       ? (totalCell.innerHTML =
-          "$" + (percentTotal() + totalBeforePercent()).toString())
+          "$" + (percentTotal + totalBeforePercent()).toString())
       : null;
   }, []);
 

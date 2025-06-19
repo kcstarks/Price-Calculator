@@ -6,6 +6,8 @@ export default [
       taxi: {
         load_fee: 20.0,
         underfifty: 1.75,
+        underhundred: 0,
+        overhundred: 0,
       },
       ambulatory: {
         load_fee: 35.0,
