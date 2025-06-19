@@ -32,12 +32,16 @@ const PrivateTable = ({ inputQuery }: Props) => {
       }
       return totalList.reduce(getSum, 0);
     };
-
+    const fuelFee = 
+      inputQuery.payer?.fuel_surcharge[
+        inputQuery.fuelRange as keyof typeof inputQuery.payer.fuel
+    ];
     const percentTotal = () => {
-      return totalBeforePercent() * 0.06;
+      let x = totalBeforePercent() * fuelFee;
+      return parseFloat(x.toFixed(2))
     };
 
-    let percentCell = document.getElementById("sixPercent");
+    let percentCell = document.getElementById("fuelSurcharge");
     percentCell != null
       ? (percentCell.innerHTML = "$" + percentTotal().toString())
       : null;
@@ -88,6 +92,11 @@ const PrivateTable = ({ inputQuery }: Props) => {
     inputQuery.payer?.oxygen[
       inputQuery.oxygenRange as keyof typeof inputQuery.payer.oxygen
     ];
+  const fuelMap: { [key: string]: string } = {
+    over_3: "3%",
+    over_4: "6%",
+    over_5: "10%",
+  };
 
   return (
     <>
@@ -142,11 +151,13 @@ const PrivateTable = ({ inputQuery }: Props) => {
                 <Td className="totalCell">${oxygenFee}</Td>
               </Tr>
             ) : null}
-            <Tr className="row">
-              <Th>Fuel Surcharge</Th>
-              <Td>6%</Td>
-              <Td id="sixPercent"></Td>
-            </Tr>
+            {inputQuery.isFuel ? (
+              <Tr className="row">
+                <Th>Fuel Surcharge</Th>
+                <Td>{fuelMap[inputQuery.fuelRange]}</Td>
+                <Td id="fuelSurcharge"></Td>
+              </Tr>
+            ) : null}
           </Tbody>
           <Tfoot>
             <Tr>

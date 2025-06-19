@@ -12,8 +12,9 @@ const WeekendSelector = ({ onSelectWeekend, selectedPayer }: Props) => {
   if (selectedPayer != null) {
     return (
       <>
-        <Heading paddingBottom={3}>Weekend Fee?</Heading>
+        <Heading className="selector" paddingBottom={3}>Weekend Fee?</Heading>
         <RadioGroup
+          className="selector"
           onChange={(value) => setIsWeekend(JSON.parse(value))}
           value={isWeekend.toString()}
         >
@@ -35,6 +36,5 @@ const WeekendSelector = ({ onSelectWeekend, selectedPayer }: Props) => {
     );
   } else return <div> </div>;
   }
-};
 
 export default WeekendSelector;

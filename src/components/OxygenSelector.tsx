@@ -4,11 +4,13 @@ import { useState } from "react";
 
 interface Props {
   selectedPayer: Payer | null;
+  selectedMode: string;
+  selectedMiles: number;
   onSelectOxygen: (oxygenRange: string) => void;
   setIsOxygen: (isOxygen: boolean) => void;
 }
 
-const Oxygen = ({ selectedPayer, onSelectOxygen, setIsOxygen }: Props) => {
+const Oxygen = ({ selectedPayer, selectedMode, selectedMiles, onSelectOxygen, setIsOxygen }: Props) => {
   const [oxygen, setOxygen] = useState("false");
 
   const oxygenMap: { [key: string]: string } = {
@@ -17,14 +19,15 @@ const Oxygen = ({ selectedPayer, onSelectOxygen, setIsOxygen }: Props) => {
     three: "8 +",
   };
 
-  if (selectedPayer != null) {
+  if (selectedPayer != null && selectedMode != 'taxi') {
     const oxygenKeys: string[] = Object.keys(selectedPayer.oxygen);
 
     if (oxygen === "false") {
       return (
         <>
-          <Heading paddingBottom={3}>Any oxygen?</Heading>
+          <Heading className="selector" paddingBottom={3}>Any oxygen?</Heading>
           <RadioGroup
+            className="selector"
             onChange={(value) => setOxygen(JSON.parse(value))}
             value={oxygen.toString()}
           >

@@ -14,3 +14,8 @@ Tfoot > Tr > Th {
 .row > Th {
   color: #f0af24;
 }
+
+button:hover {
+  scale: 1.1;
+  box-shadow: 0.2em 0.2em 1em dimgray;
+}

@@ -4,32 +4,41 @@ export interface Payer {
   name: string;
   slug: string;
   mode: {
+    taxi: {
+      load_fee: float,
+      underfifty: float,
+    },
     ambulatory: {
-      load_fee: number;
-      underfifty: number;
-      underhundred: number;
-      overhundred: number;
+      load_fee: float;
+      underfifty: float;
+      underhundred: float;
+      overhundred: float;
     };
     wheelchair: {
-      load_fee: number;
-      underfifty: number;
-      underhundred: number;
-      overhundred: number;
+      load_fee: float;
+      underfifty: float;
+      underhundred: float;
+      overhundred: float;
     };
     stretcher: {
-      load_fee: number;
-      underfifty: number;
-      underhundred: number;
-      overhundred: number;
+      load_fee: float;
+      underfifty: float;
+      underhundred: float;
+      overhundred: float;
     };
   };
-  bari: number;
+  bari: float;
   oxygen: {
-    one: number;
-    two: number;
-    three: number;
+    one: float;
+    two: float;
+    three: float;
   };
-  weekend_fee: number;
+  weekend_fee: float;
+  fuel_surcharge: {
+    over_3: float;
+    over_4: float;
+    over_5: float;
+  }
 }
 
 const usePayers = () => ({ data: payers });

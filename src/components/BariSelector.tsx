@@ -12,12 +12,13 @@ const BariSelector = ({ selectedPayer, onSelectBari }: Props) => {
   if (selectedPayer != null) {
     return (
       <>
-        <Heading paddingBottom={3}>Bariatric Fee?</Heading>
+        <Heading className="selector" paddingBottom={3}>Bariatric Fee?</Heading>
         <RadioGroup
           onChange={(value) => setIsBari(JSON.parse(value))}
           value={isBari.toString()}
         >
           <Radio
+            className="selector"
             value={true.toString()}
             onChange={() => onSelectBari(true)}
             paddingEnd={5}

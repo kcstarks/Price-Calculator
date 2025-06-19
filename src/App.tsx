@@ -1,5 +1,5 @@
 import { useState } from "react";
-import PayerSelctor from "./components/PayerSelector";
+import PayerSelector from "./components/PayerSelector";
 import MileInput from "./components/MileInput";
 import { Payer } from "./hooks/usePayers";
 import { Box, Container, Flex } from "@chakra-ui/react";
@@ -8,6 +8,7 @@ import OxygenSelector from "./components/OxygenSelector";
 import WeekendSelector from "./components/WeekendSelector";
 import BariSelector from "./components/BariSelector";
 import PriceModal from "./components/PriceModal";
+import FuelSelector from "./components/FuelSelector";
 
 export interface InputQuery {
   payer: Payer | null;
@@ -17,6 +18,8 @@ export interface InputQuery {
   oxygenRange: string;
   weekend: boolean;
   bari: boolean;
+  isFuel: boolean;
+  fuelRange: string;
 }
 
 function App() {
@@ -35,7 +38,7 @@ function App() {
         gap={10}
       >
         <Box>
-          <PayerSelctor
+          <PayerSelector
             onSelectPayer={(payer) => setInputQuery({ ...inputQuery, payer })}
             selectedPayer={inputQuery.payer}
           />
@@ -48,6 +51,7 @@ function App() {
         <Box>
           <ModeSelector
             selectedPayer={inputQuery.payer}
+            selectedMiles={inputQuery.miles}
             onSelectMode={(mode) => setInputQuery({ ...inputQuery, mode })}
           />
         </Box>
@@ -71,11 +75,21 @@ function App() {
             onSelectOxygen={(oxygenRange) =>
               setInputQuery({ ...inputQuery, oxygenRange })
             }
+            selectedMode={inputQuery.mode}
+            selectedMiles={inputQuery.miles}
             setIsOxygen={(isOxygen) =>
               setInputQuery({ ...inputQuery, isOxygen })
             }
           />
         </Box>
+        <Box>
+          <FuelSelector
+            selectedPayer={inputQuery.payer}
+            onSelectFuel={(fuelRange) => setInputQuery({ ...inputQuery, fuelRange })}
+            setIsFuel={(isFuel) => setInputQuery({ ...inputQuery, isFuel })}
+          />
+        </Box>
+
         <Box>
           <PriceModal inputQuery={inputQuery} />
         </Box>
