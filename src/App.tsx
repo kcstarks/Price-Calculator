@@ -9,6 +9,7 @@ import WeekendSelector from "./components/WeekendSelector";
 import BariSelector from "./components/BariSelector";
 import PriceModal from "./components/PriceModal";
 import FuelSelector from "./components/FuelSelector";
+import CCSelector from './components/CCSelector';
 
 export interface InputQuery {
   payer: Payer | null;
@@ -20,10 +21,14 @@ export interface InputQuery {
   bari: boolean;
   isFuel: boolean;
   fuelRange: string;
+  isCC: boolean;
 }
+
+
 
 function App() {
   const [inputQuery, setInputQuery] = useState<InputQuery>({} as InputQuery);
+  
 
   return (
     <Container
@@ -41,6 +46,7 @@ function App() {
           <PayerSelector
             onSelectPayer={(payer) => setInputQuery({ ...inputQuery, payer })}
             selectedPayer={inputQuery.payer}
+
           />
         </Box>
         <Box>
@@ -87,6 +93,12 @@ function App() {
             selectedPayer={inputQuery.payer}
             onSelectFuel={(fuelRange) => setInputQuery({ ...inputQuery, fuelRange })}
             setIsFuel={(isFuel) => setInputQuery({ ...inputQuery, isFuel })}
+          />
+        </Box>
+        <Box>
+          <CCSelector
+            selectedPayer={inputQuery.payer}
+            onSelectCC={(isCC) => setInputQuery({ ...inputQuery, isCC })}
           />
         </Box>
 

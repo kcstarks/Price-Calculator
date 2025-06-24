@@ -49,11 +49,27 @@ const PrivateTable = ({ inputQuery }: Props) => {
       ? (percentCell.innerHTML = "$" + percentTotal.toString())
       : null;
 
+    let total_before_cc = (percentTotal + totalBeforePercent())
     let totalCell = document.getElementById("total");
     totalCell != null
       ? (totalCell.innerHTML =
-          "$" + (percentTotal + totalBeforePercent()).toString())
+          "$" + (parseFloat( total_before_cc.toFixed(2))).toString())
       : null;
+
+    let ccTotal = total_before_cc * 0.04
+    let ccCell = document.getElementById('ccFee');
+    ccCell != null
+      ? (ccCell.innerHTML =  
+        '$' + (parseFloat(ccTotal.toFixed(2))).toString())
+      : null;
+
+    let totalAfterCCCell = document.getElementById('total_after_cc');
+    totalAfterCCCell != null
+      ? (totalAfterCCCell.innerHTML = 
+        '$' + (parseFloat((total_before_cc + ccTotal).toFixed(2))).toString())
+      : null;
+      
+
   }, []);
 
   let payerMode =
@@ -81,7 +97,8 @@ const PrivateTable = ({ inputQuery }: Props) => {
   };
 
   const costPerMile = () => {
-    return feePerMile() * inputQuery.miles;
+    let x = feePerMile() * inputQuery.miles;
+    return x.toFixed(2)
   };
 
   //
@@ -122,7 +139,7 @@ const PrivateTable = ({ inputQuery }: Props) => {
             <Tr className="row">
               <Th>Dry Mileage</Th>
               <Td>$1.00/{inputQuery.miles}mi</Td>
-              <Td className="totalCell">${inputQuery.miles}</Td>
+              <Td className="totalCell">${( inputQuery.miles ).toFixed(2)}</Td>
             </Tr>) : null}
 
             <Tr className="row">
@@ -161,12 +178,24 @@ const PrivateTable = ({ inputQuery }: Props) => {
                 <Td id="fuelSurcharge"></Td>
               </Tr>
             ) : null}
+            <Tr className='row'>
+              <Th>Total</Th>
+              <Th>-</Th>
+              <Td id='total'></Td>
+            </Tr>
+            {inputQuery.isCC ? (
+              <Tr className='row'>
+                <Th>Credit Card Fee</Th>
+                <Td>4%</Td>
+                <Td id='ccFee'></Td>
+              </Tr>
+            ): null}
           </Tbody>
           <Tfoot>
             <Tr>
               <Th></Th>
-              <Th>Total</Th>
-              <Td id="total"></Td>
+              <Th>Complete Total</Th>
+              <Td id="total_after_cc"></Td>
             </Tr>
           </Tfoot>
         </Table>
